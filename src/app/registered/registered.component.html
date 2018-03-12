@@ -1,0 +1,37 @@
+<div class="container" align="center">
+  <div class="col-lg">
+    <div class="well">
+      <input [(ngModel)]="searchStudent" class="form-control" type="text" name="search" placeHolder="Search student last name">
+    </div>  
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <div class="panel-title">Registered Student</div>
+      </div>    
+
+      <div class="panel-body">
+        <table class="table table-striped">
+          <tbody>
+            <th>#</th><th>FIRST NAME</th><th>LAST NAME</th><th>DATE</th><th>COURSE</th>
+              <tr *ngFor="let studentList of (studentDetail | search : searchStudent);let i = index"> <!-- Custom search Pipe -->
+                <td>
+                  {{i + 1}}.                
+                </td>
+                <td>
+                  {{studentList?.firstName | capitalize}} <!-- Custom Pipe to capitalize the First letter -->
+                </td>  
+                <td>
+                  {{studentList?.lastName}} 
+                </td>            
+                <td>
+                  {{studentList?.date | date: 'M/d/yyyy'}} <!-- DatePipe -->
+                </td>
+                <td>
+                  {{studentList?.courseOption}}                  
+                </td>                                     
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
