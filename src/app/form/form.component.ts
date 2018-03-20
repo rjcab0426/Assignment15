@@ -28,6 +28,11 @@ export class FormComponent implements OnInit {
   ) { }
      
   ngOnInit() {
+
+    const token = localStorage.getItem('token')
+    if(token === null) {
+      this.router.navigate(['/login'])
+    }
     
     this.studentM = {
       firstName: '',
